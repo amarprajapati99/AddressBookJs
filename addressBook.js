@@ -19,7 +19,7 @@ constructor(params) {
 
     get firstName() { return this.firstName; }
     set firstName(firstName) {
-        let firstNameRegex = RegExp('^[A-Z]{1}[a-z]{2,}$');
+        let firstNameRegex = /'^[A-Z]{1}[a-z]{2,}+$'/;
         if (firstNameRegex.test(firstName))
             this._firstName = firstName;
         else
@@ -31,7 +31,7 @@ constructor(params) {
 
     get lastName() { return this._lastName; }
     set lastName(lastName) {
-        let nameRegex = RegExp("^[A-Z]{1}[a-z]{2,}$");
+        let nameRegex = /^[A-Za-z]+$/;
         if (nameRegex.test(lastName))
             this._lastName = lastName;
         else
@@ -120,16 +120,20 @@ constructor(params) {
     }
 }
 
-/* @Description - to create a new address book array and add new contacts  */
+/* @Description - to create a new address book array and add new contacts 
+ * to added new details for contact person using their name and edit it */
 
 try {
     let detailsArray = new Array();
-    detailsArray.push(new Contact("Amar", "Mishra", "RamNagar", "Ambedhkar", "Up", "223 223",
-        "91 8052696969", "jay@gmail.com"));
-        detailsArray.push(new Contact("Ravi", "Mishra", "RamNagar", "Ambedhkar", "Up", "223 223",
-        "91 9452696969", "ravi@gmail.com"));
-    
-    
+    detailsArray.push(new Contact('Amar', 'Mishra', 'RamNagar', 'Ambedhkar', 'Up', '223 223',
+        '91 8052696969', 'jay@gmail.com'));
+        detailsArray.push(new Contact('Ravi', 'Mishra', 'RamNagar', 'Ambedhkar', 'Up', '223 223',
+        '91 9452696969', 'ravi@gmail.com'));
+
+    console.log('contacts before being updated \n');
+    detailsArray.forEach((contact) => console.log(contact.toString()));
+    detailsArray.filter(contact => contact.firstName == 'Ravi').map(contact => contact.firstName = "Bahubali");
+    console.log('contacts after being updated \n');
     detailsArray.forEach((contact) => console.log(contact.toString()));
 }
 catch (e) {
