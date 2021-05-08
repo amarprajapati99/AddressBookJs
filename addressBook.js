@@ -1,17 +1,17 @@
 /* @Description - create contacts class and create constructor to used the this keyword
  *for the initializing the instances set value with the possition */
 
-class Contact{
+class Contact {
 
-constructor(params) {
-    this.firstName = params[0];
-    this.lastName = params[1];
-    this.address = params[2];
-    this.city = params[3];
-    this.state = params[4];
-    this.zip = params[5];
-    this.phoneNumber = params[6];
-    this.email = params[7];
+    constructor(params) {
+        this.firstName = params[0];
+        this.lastName = params[1];
+        this.address = params[2];
+        this.city = params[3];
+        this.state = params[4];
+        this.zip = params[5];
+        this.phoneNumber = params[6];
+        this.email = params[7];
     }
 
     /* @Description - to validate first name should start with captital character
@@ -26,8 +26,8 @@ constructor(params) {
             throw "Invalid first Name";
     }
 
-     /* @Description - to validate last name should start with captital character
-     * to used throw keyword for the invalid last name */
+    /* @Description - to validate last name should start with captital character
+    * to used throw keyword for the invalid last name */
 
     get lastName() { return this._lastName; }
     set lastName(lastName) {
@@ -50,8 +50,8 @@ constructor(params) {
             throw "Invalid address ";
     }
 
-     /* @Description - to validate city should start with captital letters or small letters
-     * to used throw keyword for the invalid city  */
+    /* @Description - to validate city should start with captital letters or small letters
+    * to used throw keyword for the invalid city  */
 
     get city() { return this._city; }
     set city(city) {
@@ -128,14 +128,14 @@ try {
     let detailsArray = new Array();
     detailsArray.push(new Contact('Amar', 'Mishra', 'RamNagar', 'Ambedhkar', 'Up', '223 223',
         '91 8052696969', 'jay@gmail.com'));
-        detailsArray.push(new Contact('Ravi', 'Mishra', 'RamNagar', 'Ambedhkar', 'Up', '223 223',
+    detailsArray.push(new Contact('Ravi', 'Mishra', 'RamNagar', 'Ambedhkar', 'Up', '223 223',
         '91 9452696969', 'ravi@gmail.com'));
-        detailsArray.push(new Contact('Rakesh', 'Mishra', 'RamNagar', 'Ambedhkar', 'Up', '223 223',
+    detailsArray.push(new Contact('Rakesh', 'Mishra', 'RamNagar', 'Ambedhkar', 'Up', '223 223',
         '91 8452696969', 'rkprajapati@gmail.com'));
 
     console.log('contacts before being updated \n');
     detailsArray.forEach((contact) => console.log(contact.toString()));
-    
+
     detailsArray.filter(contact => contact.firstName == 'Ravi').map(contact => contact.firstName = "Bahubali");
     console.log('contacts after being updated \n');
     detailsArray.forEach((contact) => console.log(contact.toString()));
@@ -144,9 +144,10 @@ try {
     detailsArray.slice(index, 1);
     console.log('address book after deleting contact ');
     detailsArray.forEach((contact) => console.log(contact.toString()));
-/* @Description - declear function and return count value if the codition failed the increase the count
- * value.
- * by using reduce method to count the number of contact which is present is array*/
+
+    /* @Description - declear function and return count value if the codition failed the increase the count
+     * value.
+     * by using reduce method to count the number of contact which is present is array*/
 
     let count = 0;
     function findNumberOfContacts(contact) {
@@ -155,7 +156,30 @@ try {
     }
     detailsArray.reduce(findNumberOfContacts, 0);
     console.log(' Total number of contacts in array  : ' + count);
+    let newContact = new Contact("Surah", 'Verma', "Prayagraj", 'Alahabad', 'Up',
+        "903 678", "91 8054564556", "spverma.sep@gmail.com");
+
+
+    function checkDuplicates(count, contact) {
+        if (contact != null)
+            count++;
+        return count;
+    }
+
+    function addContact() {
+        if (countDuplicate == 0) detailsArray.push(newContact);
+        else console.log("\nContact not added in the address book. Duplicate Entry found.\n");
+    }
+
+    let countDuplicate = detailsArray.filter(contact => contact.firstName == newContact.firstName)
+    .map(contact => contact).reduce(checkDuplicates, 0);
+
+    addContact();
+
+    console.log('Checking duplicate while adding new contact in the address book ');
+    detailsArray.forEach((contact) => console.log(contact.toString()));
 }
+
 catch (e) {
     console.log('Regex test is fail \n' + e);
 }
