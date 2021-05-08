@@ -121,7 +121,8 @@ constructor(params) {
 }
 
 /* @Description - to create a new address book array and add new contacts 
- * to added new details for contact person using their name and edit it */
+ * to added new details for contact person using their name and edit it
+ * used to slice method to delete contact by using person name  */
 
 try {
     let detailsArray = new Array();
@@ -129,11 +130,19 @@ try {
         '91 8052696969', 'jay@gmail.com'));
         detailsArray.push(new Contact('Ravi', 'Mishra', 'RamNagar', 'Ambedhkar', 'Up', '223 223',
         '91 9452696969', 'ravi@gmail.com'));
+        detailsArray.push(new Contact('Rakesh', 'Mishra', 'RamNagar', 'Ambedhkar', 'Up', '223 223',
+        '91 8452696969', 'rkprajapati@gmail.com'));
 
     console.log('contacts before being updated \n');
     detailsArray.forEach((contact) => console.log(contact.toString()));
+    
     detailsArray.filter(contact => contact.firstName == 'Ravi').map(contact => contact.firstName = "Bahubali");
     console.log('contacts after being updated \n');
+    detailsArray.forEach((contact) => console.log(contact.toString()));
+
+    let index = detailsArray.findIndex(contact => contact.firstName = 'Rakesh');
+    detailsArray.slice(index, 1);
+    console.log('address book after deleting contact ');
     detailsArray.forEach((contact) => console.log(contact.toString()));
 }
 catch (e) {
