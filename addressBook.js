@@ -19,8 +19,8 @@ constructor(params) {
 
     get firstName() { return this.firstName; }
     set firstName(firstName) {
-        let nameRegex = RegExp("^[A-Z]{1}[A-Za-z]{2,}$");
-        if (nameRegex.test(firstName))
+        let firstNameRegex = RegExp('^[A-Z]{1}[a-z]{2,}$');
+        if (firstNameRegex.test(firstName))
             this._firstName = firstName;
         else
             throw "Invalid first Name";
@@ -31,7 +31,7 @@ constructor(params) {
 
     get lastName() { return this._lastName; }
     set lastName(lastName) {
-        let nameRegex = RegExp("^[A-Z]{1}[A-Za-z]{2,}$");
+        let nameRegex = RegExp("^[A-Z]{1}[a-z]{2,}$");
         if (nameRegex.test(lastName))
             this._lastName = lastName;
         else
@@ -120,3 +120,18 @@ constructor(params) {
     }
 }
 
+/* @Description - to create a new address book array and add new contacts  */
+
+try {
+    let detailsArray = new Array();
+    detailsArray.push(new Contact("Amar", "Mishra", "RamNagar", "Ambedhkar", "Up", "223 223",
+        "91 8052696969", "jay@gmail.com"));
+        detailsArray.push(new Contact("Ravi", "Mishra", "RamNagar", "Ambedhkar", "Up", "223 223",
+        "91 9452696969", "ravi@gmail.com"));
+    
+    
+    detailsArray.forEach((contact) => console.log(contact.toString()));
+}
+catch (e) {
+    console.log('Regex test is fail \n' + e);
+}
