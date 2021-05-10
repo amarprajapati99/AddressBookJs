@@ -159,7 +159,6 @@ try {
     let newContact = new Contact("Surah", 'Verma', "Prayagraj", 'Alahabad', 'Up',
         "903 678", "91 8054564556", "spverma.sep@gmail.com");
 
-
     function checkDuplicates(count, contact) {
         if (contact != null)
             count++;
@@ -178,6 +177,41 @@ try {
 
     console.log('Checking duplicate while adding new contact in the address book ');
     detailsArray.forEach((contact) => console.log(contact.toString()));
+
+     /* @Description - declear a function and pass the two parameter countByCity and contact which is count 
+      * number of person.
+      * @Return - countByCIty  */
+
+     function countPersonByCity(countByCity, contact) {
+        if (contact != null)
+            countByCity++;
+        return countByCity;
+    }
+
+    /* @Descreption - search  city by person name which is persent in side contact  */
+
+    function searchByCity() {
+        if (searchByCity == 0) console.log('Search not found by city name ' + searchCity);
+        else console.log("\n" + searchByCity + ' Search found by city name ' + searchCity);
+    }
+    let searchCity = 'Ambedhkar';
+    let searchByCity = detailsArray.filter(contact => contact.city == searchCity).map(contact => contact).reduce(countPersonByCity, 0);
+    searchByCity();
+
+     /* @Descreption - search  state by  name which is persent in side contact  */
+
+    function countPersonByCity(countByState, contact) {
+        if (contact != null)
+            countByState++;
+        return countByState;
+    }
+    function searchByState() {
+        if (serchByState == 0) console.log('Search not found by state name ' + searchState);
+        else console.log('\n '+ serchByState + ' Search found by state name ' + searchState);
+    }
+    let searchState = 'Uttar Pradesh';
+    let serchByState = detailsArray.filter(contact => contact.state == searchState).map(contact => contact).reduce(countPersonByCity, 0);
+    searchByState();
 }
 
 catch (e) {
