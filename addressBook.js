@@ -236,7 +236,7 @@ try {
 
     /* @Description - to sort the entries in the address book alphabetically by
      * person’s name */ 
-    
+
     function sortByName() {
         for (let details in detailsArray) {
             detailsArray.sort(details.firstName);
@@ -245,6 +245,7 @@ try {
     }
     console.log("Sorting by firstName");
     sortByName();
+    
 }
 
 catch (e) {
